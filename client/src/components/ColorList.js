@@ -43,7 +43,7 @@ const ColorList = ({ colors, updateColors }) => {
       .delete(`/api/colors/${color.id}`)
       .then(res => {
         console.log(res);
-        // let deletedColor = colors.filter(colorItem => colorItem.id !== color);
+        // let deletedColor = colors.filter(colorItem => colorItem.id !== color.id);
         // updateColors([...deletedColor]);
         updateColors(colors.filter(colorItem => colorItem.id !== color.id));
         setEditing(false);
