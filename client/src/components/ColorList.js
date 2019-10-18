@@ -38,14 +38,15 @@ const ColorList = ({ colors, updateColors }) => {
   const deleteColor = color => {
     // color.preventDefault();
     // make a delete request to delete this color
-
     axiosWithAuth()
       .delete(`/api/colors/${color.id}`)
       .then(res => {
         console.log(res);
-        // let deletedColor = colors.filter(colorItem => colorItem.id !== color.id);
-        // updateColors([...deletedColor]);
-        updateColors(colors.filter(colorItem => colorItem.id !== color.id));
+        let deletedColor = colors.filter(
+          colorItem => colorItem.id !== color.id
+        );
+        updateColors([...deletedColor]);
+        // updateColors(colors.filter(colorItem => colorItem.id !== color.id));
         setEditing(false);
       })
       .catch(err => console.log(err));
