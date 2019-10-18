@@ -40,11 +40,13 @@ const ColorList = ({ colors, updateColors }) => {
     // make a delete request to delete this color
 
     axiosWithAuth()
-      .delete(`/api/colors/${colorToEdit.id}`)
+      .delete(`/api/colors/${color.id}`)
       .then(res => {
         console.log(res);
-        let deletedColor = colors.filter(colorItem => colorItem.id !== color);
-        updateColors([...deletedColor]);
+        // let deletedColor = colors.filter(colorItem => colorItem.id !== color);
+        // updateColors([...deletedColor]);
+        updateColors(colors.filter(colorItem => colorItem.id !== color.id));
+        setEditing(false);
       })
       .catch(err => console.log(err));
   };
